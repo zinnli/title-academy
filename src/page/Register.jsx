@@ -5,10 +5,12 @@ import RegisterForm from "../components/Login/RegisterForm";
 
 function Register() {
      return (
-          <Layout>
+          <>
                <Header />
-               <RegisterForm />
-          </Layout>
+               <Layout>
+                    <RegisterForm />
+               </Layout>
+          </>
      );
 }
 

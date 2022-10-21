@@ -3,7 +3,6 @@ import styled from "styled-components";
 function Layout({ children }) {
      return <STLayout>{children}</STLayout>;
 }
-
 export default Layout;
 
 const STLayout = styled.div`
@@ -11,5 +10,6 @@ const STLayout = styled.div`
      height: 100%;
      display: flex;
      flex-direction: column;
+     align-items: center;
      gap: 20px;
 `;

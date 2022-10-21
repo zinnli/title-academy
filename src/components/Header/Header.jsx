@@ -18,8 +18,13 @@ const STHeader = styled.div`
      width: 100%;
      height: 60px;
      display: flex;
-     justify-content: space-between;
+     justify-content: center;
      align-items: center;
+     position: fixed;
+     top: 0;
+     gap: 30%;
+     border-bottom: 1px solid #333;
+     background-color: #fff;
      div {
           display: flex;
           gap: 10px;
