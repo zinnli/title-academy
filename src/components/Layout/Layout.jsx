@@ -12,11 +12,3 @@ const STLayout = styled.div`
   flex-direction: column;
   gap: 20px;
 `;
-
-const STLayout = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 20px;
-`;
