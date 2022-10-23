@@ -3,6 +3,10 @@ import styled from "styled-components";
 function DetailPost() {
      return (
           <STDetailPost>
+               <div>
+                    <span>작성자</span>
+                    <span>날짜</span>
+               </div>
                <img
                     src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdYX6k8%2FbtrzbGT2KT4%2FILq2pR7eNiWzknVETKCGR0%2Fimg.jpg"
                     alt="zzal"
@@ -26,11 +30,20 @@ const STDetailPost = styled.div`
      flex-direction: column;
      align-items: center;
      justify-content: flex-start;
+     padding: 60px 0 30px 0;
      img {
-          width: 40%;
-          height: 40%;
+          width: 350px;
+          height: 350px;
           object-fit: cover;
-          padding: 50px;
+          padding: 30px;
+     }
+     div:first-child {
+          width: 350px;
+          display: flex;
+          flex-direction: column;
+          align-items: flex-start;
+          padding: 15px 0 0 0;
+          gap: 10px;
      }
      div {
           width: 80%;

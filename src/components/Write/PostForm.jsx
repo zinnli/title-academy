@@ -74,23 +74,33 @@ function PostForm() {
 
 export default PostForm;
 
-const PostFormWrap = styled.div`
-  width: 300px;
-`;
-const PostTitleInput = styled.input`
-  width: 300px;
-  height: 50px;
-  background-color: cornflowerblue;
-`;
-
-const PostContentInput = styled.textarea`
-  width: 300px;
-  height: 100px;
-  background-color: cornflowerblue;
-`;
-
-const PostBtn = styled.button`
-  width: 100px;
-  height: 30px;
-  background-color: cornflowerblue;
+const PostFormWrap = styled.form`
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120px 0;
+  gap: 30px;
+  input {
+    width: 80%;
+    height: auto;
+    padding: 15px;
+  }
+  .img-input {
+    display: none;
+  }
+  div {
+    width: 300px;
+    height: 250px;
+    border: 2px solid #333;
+  }
+  textarea {
+    width: 550px;
+    height: 250px;
+    padding: 20px;
+  }
+  button {
+    width: 30%;
+    padding: 10px;
+  }
 `;

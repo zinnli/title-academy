@@ -5,10 +5,12 @@ import Header from "../components/Header/Header";
 
 function Login() {
      return (
-          <Layout>
+          <>
                <Header />
-               <LoginForm />
-          </Layout>
+               <Layout>
+                    <LoginForm />
+               </Layout>
+          </>
      );
 }
 
