@@ -1,11 +1,13 @@
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Header() {
+  const navigate = useNavigate();
   return (
     <STHeader>
-      <div>제목학원</div>
+      <div onClick={() => navigate("/main")}>제목학원</div>
       <div>
-        <button>글쓰기</button>
+        <button onClick={() => navigate("/write")}>글쓰기</button>
         <button>로그아웃</button>
       </div>
     </STHeader>

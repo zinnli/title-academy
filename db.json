@@ -1,0 +1,69 @@
+{
+  "postList": [
+    {
+      "image_file": "",
+      "title": "ㅎㅎㅎㅎ",
+      "content": "요곳은 아이폰 14?!ㅎ",
+      "image": "blob:http://localhost:3000/212f01ef-6ac9-4fa5-880f-56eee9231484",
+      "id": 2
+    },
+    {
+      "image_file": "",
+      "title": "",
+      "content": "내용어디갔누",
+      "image": "blob:http://localhost:3000/3c8c2589-998b-41e5-acb8-6f46b52af084",
+      "id": 3
+    }
+  ],
+  "commentList": [
+    {
+      "comment": "ㅎㅎㅎㅎㅎ",
+      "id": 1
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+      "id": 2
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+      "id": 3
+    },
+    {
+      "comment": "ㅎㅎㅎㅎ",
+      "id": 4
+    },
+    {
+      "comment": "ㅋㅋㅋㅋㅋ",
+      "id": 5
+    },
+    {
+      "comment": "ㅎㅎㅇㅎㅇㅎㅇㅎㅇ",
+      "id": 6
+    },
+    {
+      "comment": "ㅎㅎㅎㅎ",
+      "postId": "2",
+      "id": 7
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎ",
+      "postId": "3",
+      "id": 8
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎㅎ",
+      "postId": "3",
+      "id": 9
+    },
+    {
+      "comment": "gggg",
+      "postId": "3",
+      "id": 10
+    },
+    {
+      "comment": "ggggg",
+      "postId": "2",
+      "id": 11
+    }
+  ]
+}
