@@ -1,7 +1,13 @@
 import styled from "styled-components";
+import GlobalStyles from "../../styles/GlobalStyles";
 
 function Layout({ children }) {
-  return <STLayout>{children}</STLayout>;
+  return (
+    <STLayout>
+      <GlobalStyles />
+      {children}
+    </STLayout>
+  );
 }
 export default Layout;
 

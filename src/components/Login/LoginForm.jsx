@@ -1,6 +1,9 @@
+import { useState, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function LoginForm() {
+     const navigate = useNavigate();
      return (
           <STLoginForm>
                <h2>로그인</h2>
@@ -9,7 +12,8 @@ function LoginForm() {
                          <span>아이디</span>
                          <input
                               type="email"
-                              placeholder="이메일을 입력해주세요"
+                              name="email"
+                              placeholder="이메일 형식으로 입력해주세요"
                               required
                          />
                     </div>
@@ -17,13 +21,19 @@ function LoginForm() {
                          <span>비밀번호</span>
                          <input
                               type="password"
-                              placeholder="영문 대,소문자와 숫자가 1개 이상 포함된 8~16자이내의 조합으로 작성해주세요"
+                              name="password"
+                              placeholder="비밀번호를 입력해주세요"
                               required
                          />
                     </div>
                     <div className="login-page-btn">
                          <button className="btn login-btn">로그인</button>
-                         <button className="btn register-btn">회원가입</button>
+                         <button
+                              className="btn register-btn"
+                              onClick={() => navigate("/register")}
+                         >
+                              회원가입
+                         </button>
                     </div>
                </form>
           </STLoginForm>
@@ -56,27 +66,38 @@ const STLoginForm = styled.form`
                justify-content: center;
                gap: 15px;
                span {
-                    width: 105px;
+                    width: 80px;
                }
                input {
                     width: 80%;
                     padding: 10px;
+                    border: none;
+                    border-bottom: 2px solid #444;
                }
           }
           .login-page-btn {
                display: flex;
-               justify-content: flex-end;
+               justify-content: space-between;
                margin-top: 30px;
                gap: 30px;
                button {
-                    width: 30%;
+                    width: 43%;
                     padding: 10px;
+                    font-weight: 600;
+                    font-size: 13px;
+                    color: var(--color-white);
+                    background-color: transparent;
+                    border: 2px solid var(--color-darktext);
+               }
+               .login-btn {
+                    color: var(--color-darktext);
+               }
+               .login-btn:hover {
+                    background-color: var(--color-midtone);
+               }
+               .register-btn {
+                    background-color: var(--color-darktext);
                }
           }
-          /* .btn {
-               width: 35%;
-               padding: 10px;
-               margin-top: 30px;
-          } */
      }
 `;
