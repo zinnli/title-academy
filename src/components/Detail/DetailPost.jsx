@@ -28,11 +28,11 @@ function DetailPost() {
   return (
     <STDetailPost encType="multipart/form-data">
       <div>
-        <span>{post.title}</span>
+        <span>{post?.title}</span>
         <span>날짜</span>
       </div>
-      <img src={post.image} alt="zzal" />
-      <p>{post.content}</p>
+      <img src={post?.image} alt="zzal" />
+      <p>{post?.content}</p>
       <div>
         <button onClick={() => navigate(`/write/${params}`)}>수정</button>
         <button onClick={onDeletePost}>삭제</button>

@@ -64,6 +64,7 @@ function PostForm() {
       }));
     }
     setPost({ ...post, image: image.preview_URL });
+    console.log("이미지의 셋포스트", post);
   };
 
   // 컴포넌트가 언마운트되면 생성되어있는 URL 폐기하여 메모리 누수 방지
@@ -79,6 +80,7 @@ function PostForm() {
 
     setPost({ ...post, [name]: value, image: image.preview_URL });
     setModifyState({ ...modifyState, [name]: value, image: image.preview_URL });
+    console.log("데이터의 셋포스트", post);
     // setModifyState({ ...modifyState, [name]: value });
   };
   //제이슨 서버 이용(이미지없음)
@@ -125,7 +127,7 @@ function PostForm() {
             // onClick={(e) => e.target.value}
             ref={(refParam) => (inputRef = refParam)}
           />
-          <img src={image.preview_URL} alt="첨부된이미지" />
+          <img src={image?.preview_URL} alt="첨부된이미지" />
           <button type="button" onClick={() => inputRef.click()}>
             사진첨부
           </button>
@@ -145,7 +147,7 @@ function PostForm() {
             name="title"
             onChange={onChangeHandler}
             placeholder="제목입력"
-            value={modifyState.title}
+            value={modifyState?.title}
           />
 
           <input
@@ -157,7 +159,7 @@ function PostForm() {
             // onClick={(e) => e.target.value}
             ref={(refParam) => (inputRef = refParam)}
           />
-          <img src={image.preview_URL} alt="첨부된이미지" />
+          <img src={image?.preview_URL} alt="첨부된이미지" />
           <button type="button" onClick={() => inputRef.click()}>
             사진첨부
           </button>
@@ -165,7 +167,7 @@ function PostForm() {
             name="content"
             onChange={onChangeHandler}
             placeholder="내용입력"
-            value={modifyState.content}
+            value={modifyState?.content}
           />
           <button
             type="button"

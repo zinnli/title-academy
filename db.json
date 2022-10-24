@@ -2,17 +2,38 @@
   "postList": [
     {
       "image_file": "",
-      "title": "ㅎㅎㅎ",
-      "content": "내용어디갔누",
-      "image": "blob:http://localhost:3000/cb86c741-4188-475f-943f-d022ab45290d",
-      "id": 3
+      "title": "ㄻㄴㅇㄹㄴㅇ",
+      "content": "ㄹㅇㄴㅁㄻㄴㅇ",
+      "image": "blob:http://localhost:3000/228f61d1-05b4-40fa-9536-0ff688cd3c55",
+      "id": 5
     },
     {
       "image_file": "",
-      "title": "하기싫어요",
-      "content": "하기싫어요",
-      "image": "blob:http://localhost:3000/893f0749-6d34-433d-a8ad-1680bc889492",
-      "id": 4
+      "title": "ㄹㅇㄴㄹㅇㄴ",
+      "content": "ㄹㅇㄴㄹㅇㄴ",
+      "image": "blob:http://localhost:3000/23716352-9c65-4bf5-b48b-a801f5ffa68d",
+      "id": 6
+    },
+    {
+      "image_file": "",
+      "title": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+      "content": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㅇㅇㅇㅇㅇㅇㅇㅇ",
+      "image": "blob:http://localhost:3000/61b13b4d-86ae-4305-bbc2-ac60f21fe5bb",
+      "id": 7
+    },
+    {
+      "image_file": "",
+      "title": "ㄱ",
+      "content": "ㄱ",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+      "id": 8
+    },
+    {
+      "image_file": "",
+      "title": "ㄱ",
+      "content": "ㄱ",
+      "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+      "id": 9
     }
   ],
   "commentList": [
@@ -109,6 +130,21 @@
       "comment": "ㅇㄹㄹㄹㄹㄹㄹ",
       "postId": "4",
       "id": 20
+    },
+    {
+      "comment": "fdsfsd",
+      "postId": "5",
+      "id": 21
+    },
+    {
+      "comment": "ㄹㅇㄴㄹㄴ",
+      "postId": "5",
+      "id": 22
+    },
+    {
+      "comment": "ㄹㅇㄴㄹㄴㄹㅇㄴㄹㅇㄴ",
+      "postId": "5",
+      "id": 23
     }
   ]
 }
