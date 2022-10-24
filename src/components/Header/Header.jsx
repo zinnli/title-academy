@@ -1,11 +1,21 @@
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 
 function Header() {
+     const navigate = useNavigate();
      return (
           <STHeader>
-               <div>제목학원</div>
+               <Link to="/main">
+                    <TitleImg src="img/title.png" alt="title" />
+               </Link>
                <div>
-                    <button>글쓰기</button>
+                    <button
+                         onClick={() => {
+                              navigate("/write");
+                         }}
+                    >
+                         글쓰기
+                    </button>
                     <button>로그아웃</button>
                </div>
           </STHeader>
@@ -38,4 +48,8 @@ const STHeader = styled.div`
                font-size: 15px;
           }
      }
+`;
+
+const TitleImg = styled.img`
+     width: 100px;
 `;
