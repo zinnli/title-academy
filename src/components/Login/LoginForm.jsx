@@ -45,7 +45,7 @@ export default LoginForm;
 const STLoginForm = styled.form`
      width: 100%;
      height: 100%;
-     padding: 160px 0;
+     padding: 320px 0;
      display: flex;
      flex-direction: column;
      align-items: center;
@@ -53,12 +53,14 @@ const STLoginForm = styled.form`
      gap: 20px;
      form {
           width: 450px;
+          height: 100%;
           display: flex;
           flex-direction: column;
           align-items: center;
           justify-content: center;
           gap: 20px;
           padding: 20px;
+
           div {
                width: 100%;
                display: flex;
@@ -83,17 +85,19 @@ const STLoginForm = styled.form`
                button {
                     width: 43%;
                     padding: 10px;
-                    font-weight: 600;
+                    font-weight: 800;
                     font-size: 13px;
-                    color: var(--color-white);
+                    color: #fff;
                     background-color: transparent;
                     border: 2px solid var(--color-darktext);
+                    cursor: pointer;
                }
                .login-btn {
                     color: var(--color-darktext);
                }
                .login-btn:hover {
-                    background-color: var(--color-midtone);
+                    background-color: var(--color-darktext);
+                    color: #fff;
                }
                .register-btn {
                     background-color: var(--color-darktext);
