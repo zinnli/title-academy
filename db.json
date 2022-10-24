@@ -7,5 +7,64 @@
                "passwordConfirm": "q",
                "nickname": "ㅂ"
           }
+     ],
+     "postList": [
+          {
+               "image_file": "",
+               "title": "ㄻㄴㅇㄹㄴㅇ",
+               "content": "ㄹㅇㄴㅁㄻㄴㅇ",
+               "image": "blob:http://localhost:3000/228f61d1-05b4-40fa-9536-0ff688cd3c55",
+               "id": 5
+          },
+          {
+               "image_file": "",
+               "title": "ㄹㅇㄴㄹㅇㄴ",
+               "content": "ㄹㅇㄴㄹㅇㄴ",
+               "image": "blob:http://localhost:3000/23716352-9c65-4bf5-b48b-a801f5ffa68d",
+               "id": 6
+          },
+          {
+               "image_file": "",
+               "title": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
+               "content": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㅇㅇㅇㅇㅇㅇㅇㅇ",
+               "image": "blob:http://localhost:3000/61b13b4d-86ae-4305-bbc2-ac60f21fe5bb",
+               "id": 7
+          },
+          {
+               "image_file": "",
+               "title": "ㄱ",
+               "content": "ㄱ",
+               "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+               "id": 8
+          },
+          {
+               "image_file": "",
+               "title": "ㄱ",
+               "content": "ㄱ",
+               "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+               "id": 9
+          }
+     ],
+     "commentList": [
+          {
+               "comment": "ㅎㅎㅎㅎㅎ",
+               "id": 1
+          },
+          {
+               "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+               "id": 2
+          },
+          {
+               "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+               "id": 3
+          },
+          {
+               "comment": "ㅎㅎㅎㅎ",
+               "id": 4
+          },
+          {
+               "comment": "ㅋㅋㅋㅋㅋ",
+               "id": 5
+          }
      ]
 }

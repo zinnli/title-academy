@@ -4,31 +4,44 @@ import styled from "styled-components";
 import { _getPost } from "../../redux/modules/postSlice";
 
 function Post({ post }) {
-  return (
-    <>
-      <PostWrap>
-        <img src={post.image} />
-        <PostTilte>{post.content}</PostTilte>
-      </PostWrap>
-    </>
-  );
+     return (
+          <>
+               <PostWrap>
+                    <img src={post.image} alt="main-img" />
+                    <PostTitle>{post.content}</PostTitle>
+               </PostWrap>
+          </>
+     );
 }
 
 export default Post;
 const PostWrap = styled.div`
-  height: 250px;
-
-  margin: 20px 30px 20px 30px;
-  img {
-    object-fit: cover;
-    height: 200px;
-    width: 200px;
-  }
+     width: 340px;
+     height: 450px;
+     padding: 40px 40px;
+     border: 2px solid var(--color-primary);
+     border-radius: 5px;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+     img {
+          object-fit: cover;
+          width: 260px;
+          height: 260px;
+          background-color: #fff;
+          border: 1px solid var(--color-primary);
+     }
+     &:hover {
+          border: 3px solid var(--color-primary);
+          box-shadow: 3px 3px 10px 5px var(--color-primary);
+     }
 `;
 
-const PostTilte = styled.div`
-  height: 50px;
-  width: 200px;
-  margin-top: 10px;
-  background-color: teal;
+const PostTitle = styled.div`
+     height: 80px;
+     width: 260px;
+     margin-top: 10px;
+     padding: 10px;
+     border-top: 2px solid var(--color-primary);
 `;
