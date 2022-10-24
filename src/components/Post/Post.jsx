@@ -1,11 +1,14 @@
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
+import { _getPost } from "../../redux/modules/postSlice";
 
-function Post() {
+function Post({ post }) {
   return (
     <>
       <PostWrap>
-        <PostPicture>여긴 사진입니다.</PostPicture>
-        <PostTilte>여긴 제목입니다.</PostTilte>
+        <img src={post.image} />
+        <PostTilte>{post.content}</PostTilte>
       </PostWrap>
     </>
   );
@@ -16,13 +19,13 @@ const PostWrap = styled.div`
   height: 250px;
 
   margin: 20px 30px 20px 30px;
+  img {
+    object-fit: cover;
+    height: 200px;
+    width: 200px;
+  }
 `;
 
-const PostPicture = styled.div`
-  height: 200px;
-  width: 200px;
-  background-color: tomato;
-`;
 const PostTilte = styled.div`
   height: 50px;
   width: 200px;

@@ -1,14 +1,44 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { _getPost, _patchPost, _postPost } from "../../redux/modules/postSlice";
 
 function PostForm() {
+     const params = useParams("id").id;
+     const dispatch = useDispatch();
+     const navigate = useNavigate();
+
      const [image, setImage] = useState({
           image_file: "",
           preview_URL:
-               "https://user-images.githubusercontent.com/102575747/197247338-683eef0c-70df-44e9-8da1-ccf32108cff6.jpg",
+               "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+     });
+     console.log("파람스 유무", params);
+     const [post, setPost] = useState({
+          image_file: "",
+          title: "",
+          content: "",
      });
 
+     // 수정하기 위해 get요청
+     useEffect(() => {
+          dispatch(_getPost());
+
+          console.log("겟요청");
+     }, [dispatch]);
+
+     //수정 postList 할당
+     const { postList } = useSelector((state) => state.postList);
+
+     //수정할 post 필터링
+     const modifyPost = postList.filter((post) => {
+          return post.id == params;
+     })[0];
+     const [modifyState, setModifyState] = useState(modifyPost);
+
+     //파일 인풋창 숨기고 버튼에 참조
      let inputRef;
 
      //image 스테이트에 이미지 넣기
@@ -19,58 +49,169 @@ function PostForm() {
                //새로운 이미지 추가시 기존 URL을 폐기 후 업로드
                URL.revokeObjectURL(image.preview_URL);
                const preview_URL = URL.createObjectURL(e.target.files[0]);
-               console.log("프리뷰", preview_URL);
+
                setImage(() => ({
                     image_file: e.target.files[0],
                     preview_URL: preview_URL,
                }));
-               console.log("이미지", image.preview_URL);
+               console.log("이미지추가", image);
+          } else {
+               const preview_URL = URL.createObjectURL(e.target.files[0]);
+
+               setImage(() => ({
+                    image_file: e.target.files[0],
+                    preview_URL: preview_URL,
+               }));
           }
+          setPost({ ...post, image: image.preview_URL });
+          console.log("이미지의 셋포스트", post);
      };
 
      // 컴포넌트가 언마운트되면 생성되어있는 URL 폐기하여 메모리 누수 방지
-     // useEffect(() => {
-     //   return () => {
-     //     URL.revokeObjectURL(image.preview_URL);
-     //   };
-     // }, []);
+     useEffect(() => {
+          return () => {
+               URL.revokeObjectURL(image.preview_URL);
+          };
+     }, []);
 
-     // const sendImageToServer = async () => {
-     //   if (image.image_file) {
-     //     const formData = new FormData();
-     //     formData.append("file", image.image_file);
-     //     await axios.post("/경로입력", formData);
-     //     alert("포스트 등록 완료!");
+     //입력 온체인지 핸들러
+     const onChangeHandler = (e) => {
+          const { name, value } = e.target;
 
-     //     //image 스테이트 초기화
-     //     setImage({
-     //       image_file: "",
-     //       preview_URL: "img/default_image.png",
-     //     });
-     //   } else {
-     //     alert("사진을 등록하세요!");
-     //   }
+          setPost({ ...post, [name]: value, image: image.preview_URL });
+          setModifyState({
+               ...modifyState,
+               [name]: value,
+               image: image.preview_URL,
+          });
+          console.log("데이터의 셋포스트", post);
+          // setModifyState({ ...modifyState, [name]: value });
+     };
+     //제이슨 서버 이용(이미지없음)
+     const onSubmitHandler = (post) => {
+          dispatch(_postPost(post));
+          alert("작성완료!");
+          navigate("/main");
+     };
+
+     const onPatchHandler = (modifyState, params) => {
+          dispatch(_patchPost({ modifyState, params }));
+          alert("수정완료!");
+          navigate(-1);
+     };
+
+     //폼데이터 형식
+     // const onSubmitHandler = () => {
+     //   const formData = new FormData();
+     //   formData.append("image", image.image_file);
+     //   formData.append("title", post.title);
+     //   formData.append("content", post.content);
+
+     //   dispatch(_postPost(formData));
+     //   alert("작성완료!");
+     //   navigate("/main");
      // };
-
      return (
           <>
-               <PostFormWrap>
-                    <input placeholder="제목입력" />
+               {!params ? (
+                    //글쓰기
+                    <PostFormWrap>
+                         <input
+                              name="title"
+                              onChange={onChangeHandler}
+                              placeholder="제목입력"
+                         />
 
-                    <input
-                         type="file"
-                         accept="image/*"
-                         onChange={saveImage}
-                         onClick={(e) => e.target.value}
-                         ref={(refParam) => (inputRef = refParam)}
-                    />
-                    <img src={image.preview_URL} alt="첨부된이미지" />
-                    <button type="button" onClick={() => inputRef.click()}>
-                         사진첨부
-                    </button>
+                         <input
+                              className="img-input"
+                              type="file"
+                              accept="image/*"
+                              name="image_file"
+                              onChange={saveImage}
+                              // onClick={(e) => e.target.value}
+                              ref={(refParam) => (inputRef = refParam)}
+                         />
+                         <img src={image?.preview_URL} alt="첨부된이미지" />
+                         <button type="button" onClick={() => inputRef.click()}>
+                              사진첨부
+                         </button>
+                         <textarea
+                              name="content"
+                              onChange={onChangeHandler}
+                              placeholder="내용입력"
+                         />
+                         <button
+                              type="button"
+                              onClick={() => onSubmitHandler(post)}
+                         >
+                              업로드
+                         </button>
+                    </PostFormWrap>
+               ) : (
+                    //글 수정
+                    <PostFormWrap>
+                         <input
+                              name="title"
+                              onChange={onChangeHandler}
+                              placeholder="제목입력"
+                              value={modifyState?.title}
+                         />
 
-                    <button>수정/완료</button>
-               </PostFormWrap>
+                         <input
+                              className="img-input"
+                              type="file"
+                              accept="image/*"
+                              name="image_file"
+                              onChange={saveImage}
+                              // onClick={(e) => e.target.value}
+                              ref={(refParam) => (inputRef = refParam)}
+                         />
+                         <img src={image?.preview_URL} alt="첨부된이미지" />
+                         <button type="button" onClick={() => inputRef.click()}>
+                              사진첨부
+                         </button>
+                         <textarea
+                              name="content"
+                              onChange={onChangeHandler}
+                              placeholder="내용입력"
+                              value={modifyState?.content}
+                         />
+                         <button
+                              type="button"
+                              onClick={() =>
+                                   onPatchHandler(modifyState, params)
+                              }
+                         >
+                              수정완료
+                         </button>
+                    </PostFormWrap>
+               )}
+
+               {/* <PostFormWrap>
+        <input name="title" onChange={onChangeHandler} placeholder="제목입력" />
+
+        <input
+          className="img-input"
+          type="file"
+          accept="image/*"
+          name="image_file"
+          onChange={saveImage}
+          // onClick={(e) => e.target.value}
+          ref={(refParam) => (inputRef = refParam)}
+        />
+        <img src={image.preview_URL} alt="첨부된이미지" />
+        <button type="button" onClick={() => inputRef.click()}>
+          사진첨부
+        </button>
+        <textarea
+          name="content"
+          onChange={onChangeHandler}
+          placeholder="내용입력"
+        />
+        <button type="button" onClick={() => onSubmitHandler(post)}>
+          수정/완료
+        </button>
+      </PostFormWrap> */}
           </>
      );
 }
