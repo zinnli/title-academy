@@ -2,17 +2,17 @@
   "postList": [
     {
       "image_file": "",
-      "title": "ㅎㅎㅎㅎ",
-      "content": "요곳은 아이폰 14?!ㅎ",
-      "image": "blob:http://localhost:3000/212f01ef-6ac9-4fa5-880f-56eee9231484",
-      "id": 2
+      "title": "ㅎㅎㅎ",
+      "content": "내용어디갔누",
+      "image": "blob:http://localhost:3000/cb86c741-4188-475f-943f-d022ab45290d",
+      "id": 3
     },
     {
       "image_file": "",
-      "title": "",
-      "content": "내용어디갔누",
-      "image": "blob:http://localhost:3000/3c8c2589-998b-41e5-acb8-6f46b52af084",
-      "id": 3
+      "title": "하기싫어요",
+      "content": "하기싫어요",
+      "image": "blob:http://localhost:3000/893f0749-6d34-433d-a8ad-1680bc889492",
+      "id": 4
     }
   ],
   "commentList": [
@@ -64,6 +64,51 @@
       "comment": "ggggg",
       "postId": "2",
       "id": 11
+    },
+    {
+      "comment": "ㅋㅋㅋㅋㅋ",
+      "postId": "3",
+      "id": 12
+    },
+    {
+      "comment": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "postId": "3",
+      "id": 13
+    },
+    {
+      "comment": "ㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋㅋ",
+      "postId": "3",
+      "id": 14
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎ",
+      "postId": "4",
+      "id": 15
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎ그만할래요",
+      "postId": "4",
+      "id": 16
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎ그만할래요",
+      "postId": "4",
+      "id": 17
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎ그만할래요",
+      "postId": "4",
+      "id": 18
+    },
+    {
+      "comment": "ㅎㅎㅎㅎㅎㅎㅎㅎ그만할래요",
+      "postId": "4",
+      "id": 19
+    },
+    {
+      "comment": "ㅇㄹㄹㄹㄹㄹㄹ",
+      "postId": "4",
+      "id": 20
     }
   ]
 }

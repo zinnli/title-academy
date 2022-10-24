@@ -8,11 +8,11 @@ function DetailPost() {
   const navigate = useNavigate();
   const params = useParams("id").id;
   const dispatch = useDispatch();
-  const postList = useSelector((state) => state.postList.postList);
 
   useEffect(() => {
     dispatch(_getPost());
   }, [dispatch]);
+  const postList = useSelector((state) => state.postList.postList);
 
   const onDeletePost = () => {
     dispatch(_deletePost(params));

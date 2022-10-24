@@ -63,6 +63,7 @@ function PostForm() {
         preview_URL: preview_URL,
       }));
     }
+    setPost({ ...post, image: image.preview_URL });
   };
 
   // 컴포넌트가 언마운트되면 생성되어있는 URL 폐기하여 메모리 누수 방지
