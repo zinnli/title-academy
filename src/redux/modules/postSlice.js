@@ -1,6 +1,9 @@
 import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import axios from "axios";
+import { axiosInstance } from "../../shared/request";
 
+const access_token = sessionStorage.getItem("access_token");
+const refresh_token = sessionStorage.getItem("refresh_token");
 const initialState = { postList: [] };
 
 export const _postPost = createAsyncThunk(
@@ -8,7 +11,10 @@ export const _postPost = createAsyncThunk(
   async (payload, thunkAPI) => {
     console.log("페이로드", payload);
     try {
-      const data = await axios.post("http://localhost:3001/postList", payload);
+      console.log("토큰", access_token, refresh_token);
+      const data = await axiosInstance.post("/api/post", payload, {
+        headers: { Access_Token: access_token, Refresh_Token: refresh_token },
+      });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
