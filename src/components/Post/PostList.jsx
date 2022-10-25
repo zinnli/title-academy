@@ -23,20 +23,23 @@ function PostList() {
      if (error) {
           return <div>{error.message}</div>;
      }
-     console.log("포스트컴포넌트", postList);
+     console.log("포스트컴포넌트", postList.data);
      return (
           <PostListWrap>
-               {postList.map((post) => {
-                    return (
-                         <div
-                              onClick={() => navigate(`/detail/${post.id}`)}
-                              key={post.id}
-                              className="post-hover"
-                         >
-                              <Post post={post} />
-                         </div>
-                    );
-               })}
+               {postList.data &&
+                    postList.data.map((post) => {
+                         return (
+                              <div
+                                   onClick={() =>
+                                        navigate(`/detail/${post.id}`)
+                                   }
+                                   key={post.id}
+                                   className="post-hover"
+                              >
+                                   <Post post={post} />
+                              </div>
+                         );
+                    })}
           </PostListWrap>
      );
 }
