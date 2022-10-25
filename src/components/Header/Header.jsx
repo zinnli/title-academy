@@ -1,12 +1,13 @@
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import titleImg from "../../img/title.png";
 
 function Header() {
      const navigate = useNavigate();
      return (
           <STHeader>
                <Link to="/main">
-                    <TitleImg src="img/title.png" alt="title" />
+                    <TitleImg src={titleImg} alt="title" />
                </Link>
                <div>
                     <button
@@ -26,7 +27,7 @@ export default Header;
 
 const STHeader = styled.div`
      width: 100%;
-     height: 65px;
+     height: 60px;
      display: flex;
      justify-content: center;
      align-items: center;
@@ -37,22 +38,19 @@ const STHeader = styled.div`
      background-color: #fff;
      div {
           display: flex;
+          gap: 10px;
           padding: 10px 30px;
           font-weight: 700;
           font-size: 20px;
           button {
                width: fit-content;
-               padding: 0 14px;
-               font-weight: 800;
-               font-size: 17px;
-               background-color: #fff;
-               border: none;
-               color: var(--color-darktext);
-               cursor: pointer;
+               padding: 5px 10px;
+               font-weight: 700;
+               font-size: 15px;
           }
      }
 `;
 
 const TitleImg = styled.img`
-     width: 120px;
+     width: 100px;
 `;

@@ -1,9 +1,33 @@
 import { useState, useCallback } from "react";
+import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
+import { __postLogin } from "../../redux/modules/userSlice";
 
 function LoginForm() {
      const navigate = useNavigate();
+     const dispatch = useDispatch();
+
+     const initialState = {
+          email: "",
+          password: "",
+     };
+
+     const [user, setUser] = useState(initialState);
+
+     const onChangeLoginHandler = (e) => {
+          const { name, value } = e.target;
+          setUser({ ...user, [name]: value });
+     };
+
+     const onSubmitLoginHandler = (e) => {
+          e.preventDefault();
+          if (user.email.trim() === "" || user.password.trim() === "") {
+               alert("체크피료해");
+          }
+          dispatch(__postLogin(user));
+     };
+
      return (
           <STLoginForm>
                <h2>로그인</h2>
@@ -15,6 +39,7 @@ function LoginForm() {
                               name="email"
                               placeholder="이메일 형식으로 입력해주세요"
                               required
+                              onChange={onChangeLoginHandler}
                          />
                     </div>
                     <div>
@@ -24,10 +49,16 @@ function LoginForm() {
                               name="password"
                               placeholder="비밀번호를 입력해주세요"
                               required
+                              onChange={onChangeLoginHandler}
                          />
                     </div>
                     <div className="login-page-btn">
-                         <button className="btn login-btn">로그인</button>
+                         <button
+                              className="btn login-btn"
+                              onClick={onSubmitLoginHandler}
+                         >
+                              로그인
+                         </button>
                          <button
                               className="btn register-btn"
                               onClick={() => navigate("/register")}

@@ -1,14 +1,13 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { __posttUser } from "../../redux/moudule/userSlice";
+import { __postUser } from "../../redux/modules/userSlice";
 
 function RegisterForm() {
      const dispatch = useDispatch();
      //const newUser = useSelector((state) => state.user);
 
      const initialState = {
-          id: 0,
           email: "",
           password: "",
           passwordCheck: "",
@@ -17,7 +16,7 @@ function RegisterForm() {
 
      const [user, setUser] = useState(initialState);
 
-     const { email, password, passwordCheck, nickname } = user;
+     const { email, password, nickname, passwordCheck } = user;
 
      //상태관리 위해 초기값 세팅
      const [emailInput, setEmailInput] = useState("");
@@ -25,19 +24,21 @@ function RegisterForm() {
      const [passCheckInput, setPassCheckInput] = useState("");
      const [nicknameInput, setNicknameInput] = useState("");
 
+     const regEmail =
+          /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
+     const regPassword = /^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d@$!%*#?&]{8,16}$/;
+     const regNickname = /^[ㄱ-ㅎ|가-힣]{2,6}$/;
+
      // //유효성 검사
      const onChangeUserHandler = (e) => {
           const { name, value } = e.target;
           setUser({ ...user, [name]: value });
 
-          const regEmail =
-               /^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/;
           if (name === "email")
                !regEmail.test(value) // test 함수 : 문자열이 정규식을 만족하는지 판별하는 변수 .test(검사할 문자)
                     ? setEmailInput("이메일 형식으로 입력해주세요.") // 칸이 채워지면 이 내용이 하단에 뜸
                     : setEmailInput("");
-          const regPassword =
-               /^(?=.[A-Za-z])(?=.\\d)[A-Za-z\\d@$!%*#?&]{8,16}$/;
+
           if (name === "password")
                !regPassword.test(value)
                     ? setPassInput(
@@ -45,42 +46,44 @@ function RegisterForm() {
                            특수문자(!@#$%^&*)도 사용 가능합니다.`
                       )
                     : setPassInput("");
-          const regNickname = /^[ㄱ-ㅎ|가-힣]{2,6}$/;
+
           if (name === "nickname")
                !regNickname.test(value)
                     ? setNicknameInput(
                            "닉네임은 2-6자의 한글만 입력 가능합니다."
                       )
                     : setNicknameInput("");
-          if (name === "valiPass")
-               password !== value
-                    ? setPassCheckInput("비밀번호가 불일치합니다")
-                    : setPassCheckInput("");
+          // if (name === "passwordCheck")
+          //      password !== value
+          //           ? setPassCheckInput("비밀번호가 불일치합니다")
+          //           : setPassCheckInput("");
      };
 
-     const [isChecked, setIsChecked] = useState(false);
      const onSubmitUserHandler = (e) => {
           e.preventDefault();
           if (
                email.trim() === "" ||
                password.trim() === "" ||
-               passwordCheck === "" ||
+               passwordCheck.trim() === "" ||
                nickname.trim() === ""
           ) {
                return alert("아이디랑 비밀번호를 입력해주세요!");
           }
-          if (!isChecked) {
-               return alert("아이디 중복확인을 해주세요!");
-          }
-          if (isChecked) {
-               dispatch(__posttUser(user));
-          }
+
+          dispatch(
+               __postUser({
+                    email,
+                    password,
+                    nickname,
+               })
+          );
+          console.log("완료");
      };
 
      return (
           <STRegisterForm>
                <h2>회원가입</h2>
-               <form onSubmit={onSubmitUserHandler}>
+               <form>
                     <div>
                          <span>아이디</span>
                          <input
@@ -90,7 +93,6 @@ function RegisterForm() {
                               placeholder="이메일을 입력해주세요"
                               onChange={onChangeUserHandler}
                          />
-                         <button type="button">중복확인</button>
                     </div>
                     <p id="help-user" className="help">
                          {emailInput}
@@ -130,13 +132,14 @@ function RegisterForm() {
                               placeholder="닉네임을 입력해주세요"
                               onChange={onChangeUserHandler}
                          />
-                         <button type="button">중복확인</button>
                     </div>
                     <p id="help-nick" className="help">
                          {nicknameInput}
                     </p>
 
-                    <button className="enter-btn">회원가입 완료</button>
+                    <button onClick={onSubmitUserHandler} className="enter-btn">
+                         회원가입 완료
+                    </button>
                </form>
           </STRegisterForm>
      );
