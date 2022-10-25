@@ -4,9 +4,12 @@ import Register from "../page/Register";
 import Main from "../page/Main";
 import Write from "../page/Write";
 import Detail from "../page/Detail";
+
+import Header from "../components/Header/Header";
 const Router = () => {
      return (
           <BrowserRouter>
+               <Header />
                <Routes>
                     <Route path="/" element={<Login />} />
                     <Route path="/register" element={<Register />} />

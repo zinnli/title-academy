@@ -26,6 +26,7 @@ function LoginForm() {
                alert("체크피료해");
           }
           dispatch(__postLogin(user));
+          navigate("/main");
      };
 
      return (
@@ -73,7 +74,7 @@ function LoginForm() {
 
 export default LoginForm;
 
-const STLoginForm = styled.form`
+const STLoginForm = styled.div`
      width: 100%;
      height: 100%;
      padding: 320px 0;

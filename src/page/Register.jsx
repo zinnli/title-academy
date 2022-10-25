@@ -6,7 +6,6 @@ import RegisterForm from "../components/Login/RegisterForm";
 function Register() {
      return (
           <>
-               <Header />
                <Layout>
                     <RegisterForm />
                </Layout>

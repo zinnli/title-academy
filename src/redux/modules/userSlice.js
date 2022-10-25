@@ -33,7 +33,7 @@ export const __postLogin = createAsyncThunk(
      "login",
      async (payload, thunkAPI) => {
           try {
-               const data = await axiosInstance
+               const { data } = await axiosInstance
                     .post("/api/auth/login", payload)
                     .then((res) => {
                          sessionStorage.setItem(
@@ -44,9 +44,10 @@ export const __postLogin = createAsyncThunk(
                               "refresh_token",
                               res.headers.refresh_token
                          );
+                         return res;
                          //console.log(res.headers.refresh_token);
                     });
-               return thunkAPI.fulfillWithValue({ data });
+               return thunkAPI.fulfillWithValue(data.data);
           } catch (error) {
                return thunkAPI.rejectWithValue(error);
           }
@@ -75,7 +76,11 @@ const userSlice = createSlice({
           },
           [__postLogin.fulfilled]: (state, action) => {
                state.isLoading = false;
-               alert("완료");
+               console.log(action.payload);
+               sessionStorage.setItem(
+                    "userinfo",
+                    JSON.stringify(action.payload)
+               );
           },
           [__postLogin.rejected]: (state, action) => {
                state.isLoading = false;
