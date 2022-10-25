@@ -1,11 +1,24 @@
+import { useState } from "react";
 import styled from "styled-components";
 
 function Comment({ comment }) {
+  const [cmtToggle, setCmtToggle] = useState(true);
+  const onToggleHandler = () => {
+    setCmtToggle(!cmtToggle);
+  };
+
   return (
     <STComment>
-      <p>{comment.comment}</p>
+      {cmtToggle ? <p>{comment.comment}</p> : <input />}
+
       <div>
-        <button>수정</button>
+        <div>
+          {cmtToggle ? (
+            <button onClick={onToggleHandler}>수정</button>
+          ) : (
+            <button onClick={onToggleHandler}>완료</button>
+          )}
+        </div>
         <button>삭제</button>
       </div>
     </STComment>
