@@ -6,6 +6,7 @@ import Write from "../page/Write";
 import Detail from "../page/Detail";
 
 import Header from "../components/Header/Header";
+
 const Router = () => {
      return (
           <BrowserRouter>

@@ -3,6 +3,12 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
+  AiFillEdit,
+  AiFillDelete,
+  AiOutlineCheck,
+  AiFillHeart,
+} from "react-icons/ai";
+import {
   _deleteDetailPost,
   _getDetailPost,
   _postLike,
@@ -58,36 +64,64 @@ function DetailPost() {
 export default DetailPost;
 
 const STDetailPost = styled.div`
-  width: 100%;
+  width: 650px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 60px 0 30px 0;
+  margin-top: 100px;
+  padding: 0px 0 30px 0;
+  border: 2px solid var(--color-darktext);
+  border-radius: 10px;
   img {
     width: 350px;
     height: 350px;
     object-fit: cover;
-    padding: 30px;
+    padding: 20px;
   }
   div:first-child {
-    width: 350px;
+    width: 550px;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    padding: 15px 0 0 0;
-    gap: 10px;
+    padding: 15px 0;
+    font-size: 15px;
+    margin: 8px 0;
+    span:last-child {
+      font-size: 25px;
+    }
   }
-  div {
-    width: 80%;
+  p {
+    width: 550px;
+    padding: 15px 20px;
+    margin-bottom: 10px;
+  }
+  .detail-btns {
+    width: 50%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 30px;
     padding: 10px;
+    border-radius: 10px;
     button {
+      padding: 5px 10px;
       height: fit-content;
+      font-size: 20px;
+      background-color: transparent;
+      color: var(--color-midtone);
+      border: none;
+      cursor: pointer;
+    }
+    span {
+      color: orangered;
+      padding: 5px 10px;
+      height: fit-content;
+      font-size: 20px;
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
     }
   }
 `;
