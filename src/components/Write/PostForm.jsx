@@ -11,12 +11,14 @@ function PostForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  //이미지 스테이트
   const [image, setImage] = useState({
     image_file: "",
     preview_URL:
       "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
   });
-  console.log("파람스 유무", params);
+
+  //게시글 스테이트
   const [post, setPost] = useState({
     title: "",
     content: "",
@@ -31,10 +33,7 @@ function PostForm() {
   const modifyPost = useSelector((state) => state.detailPost.detailPost.data);
   console.log("수정쪽", modifyPost);
 
-  //수정할 post 필터링
-  // const modifyPost = postList.filter((post) => {
-  //   return post.id == params;
-  // })[0];
+  //수정할 데이터 스테이트
   const [modifyState, setModifyState] = useState(modifyPost);
 
   //파일 인풋창 숨기고 버튼에 참조
@@ -74,23 +73,10 @@ function PostForm() {
   //입력 온체인지 핸들러
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
-
     setPost({ ...post, [name]: value, image: image.preview_URL });
-    // setModifyState({
-    //   ...modifyState,
-    //   [name]: value,
-    //   image: image.preview_URL,
-    // });
-
+    //수정값 스테이트 변경
     setModifyState({ ...modifyState, [name]: value });
   };
-  console.log(modifyState);
-  //제이슨 서버 이용(이미지없음)
-  // const onSubmitHandler = (post) => {
-  //      dispatch(_postPost(post));
-  //      alert("작성완료!");
-  //      navigate("/main");
-  // };
 
   //수정완료 버튼  (리퀘스트 부분 확실히 알아야 함)
   const onPatchHandler = (modifyState, params) => {
@@ -105,6 +91,7 @@ function PostForm() {
     formData.append("file", image.image_file);
     formData.append(
       "post",
+      //string자료 JSON형태로 변경
       new Blob([JSON.stringify(post)], { type: "application/json" })
     );
     dispatch(_postPost(formData));
@@ -128,7 +115,7 @@ function PostForm() {
             accept="image/*"
             name="image_file"
             onChange={saveImage}
-            // onClick={(e) => e.target.value}
+            //인풋을 안보이게하고 버튼에 레퍼런스 입력함
             ref={(refParam) => (inputRef = refParam)}
           />
 

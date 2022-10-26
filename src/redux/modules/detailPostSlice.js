@@ -8,7 +8,6 @@ const initialState = { detailPost: [] };
 export const _getDetailPost = createAsyncThunk(
   "getDetailPost",
   async (payload, thunkAPI) => {
-    console.log("페이로드", payload);
     try {
       const data = await axiosInstance.get(`/api/post/${payload}`, {
         headers: { Access_Token: access_token, Refresh_Token: refresh_token },
@@ -23,12 +22,11 @@ export const _getDetailPost = createAsyncThunk(
 export const _deleteDetailPost = createAsyncThunk(
   "deleteDetailPost",
   async (payload, thunkAPI) => {
-    console.log("페이로드", payload);
     try {
       const data = await axiosInstance.delete(`/api/post/${payload}`, {
         headers: { Access_Token: access_token, Refresh_Token: refresh_token },
       });
-      console.log("삭제후 리스폰스 데이터", data);
+
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -39,7 +37,6 @@ export const _deleteDetailPost = createAsyncThunk(
 export const _putPost = createAsyncThunk(
   "putPost",
   async (payload, thunkAPI) => {
-    console.log("페이로드", payload);
     try {
       const data = await axiosInstance.put(
         `/api/post/${payload.params}`,
@@ -69,7 +66,6 @@ const detailPost = createSlice({
       .addCase(_getDetailPost.fulfilled, (state, action) => {
         state.isLoading = false;
         state.detailPost = action.payload;
-        console.log("엑스트라리듀서", current(state));
       })
       .addCase(_getDetailPost.rejected, (state, action) => {
         state.isLoading = false;
