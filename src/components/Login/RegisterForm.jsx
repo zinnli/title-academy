@@ -81,7 +81,6 @@ function RegisterForm() {
           );
           alert("가입이 완료 되셨습니다!");
           navigate("/");
-          console.log("완료");
      };
 
      return (

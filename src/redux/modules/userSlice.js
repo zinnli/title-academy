@@ -65,7 +65,6 @@ const userList = createSlice({
           },
           [__postUser.fulfilled]: (state, action) => {
                state.isLoading = false;
-               alert("완료");
           },
           [__postUser.rejected]: (state, action) => {
                state.isLoading = false;

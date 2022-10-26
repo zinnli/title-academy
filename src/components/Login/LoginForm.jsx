@@ -23,10 +23,11 @@ function LoginForm() {
      const onSubmitLoginHandler = (e) => {
           e.preventDefault();
           if (user.email.trim() === "" || user.password.trim() === "") {
-               alert("체크피료해");
+               alert("아이디랑 비밀번호를 입력해주세요!");
           }
           dispatch(__postLogin(user));
-          navigate("/main");
+          // navigate("/main");
+          // alert("로그인이 완료되었습니다");
      };
 
      return (

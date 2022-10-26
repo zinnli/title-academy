@@ -6,30 +6,34 @@ import { _getCommentList } from "../../redux/modules/commentSlice";
 import Comment from "../Comment/Comment";
 
 function CommentList() {
-  const params = useParams("id").id;
-  const dispatch = useDispatch();
-  const comments = useSelector((state) => state.commentList.commentList);
-  useEffect(() => {
-    dispatch(_getCommentList(params));
-  }, [dispatch]);
+     const params = useParams("id").id;
+     //const { id } = useParams();
+     const dispatch = useDispatch();
+     const comments = useSelector((state) => state.commentList.commentList);
+     console.log("comments test:", comments);
+     useEffect(() => {
+          dispatch(_getCommentList(params));
+     }, [dispatch, params]);
 
-  return (
-    <STCommentList>
-      {comments.map((comment) => {
-        return <Comment comment={comment} key={comment.id} />;
-      })}
-    </STCommentList>
-  );
+     return (
+          <STCommentList>
+               {comments.data?.map((comment) => {
+                    return <Comment comment={comment} key={comment.id} />;
+               })}
+          </STCommentList>
+     );
 }
 
 export default CommentList;
 
 const STCommentList = styled.div`
-  width: 650px;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  padding: 10px;
+     width: 670px;
+     height: 100%;
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     justify-content: center;
+     gap: 20px;
+     padding: 10px;
+     margin-bottom: 80px;
 `;

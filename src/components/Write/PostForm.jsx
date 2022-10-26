@@ -93,12 +93,12 @@ function PostForm() {
           formData.append("file", image.image_file);
           formData.append(
                "post",
-
+               //string자료 JSON형태로 변경
                new Blob([JSON.stringify(post)], { type: "application/json" })
           );
           dispatch(_postPost(formData));
           alert("작성완료!");
-          // navigate("/main");
+          navigate("/main");
      };
      return (
           <>

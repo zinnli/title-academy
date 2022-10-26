@@ -16,9 +16,9 @@ function Post({ post }) {
 
 export default Post;
 const PostWrap = styled.div`
-     width: 340px;
-     height: 450px;
-     padding: 40px 40px;
+     width: 220px;
+     height: 320px;
+     padding: 20px 20px;
      border: 2px solid var(--color-primary);
      border-radius: 5px;
      display: flex;
@@ -27,21 +27,22 @@ const PostWrap = styled.div`
      align-items: center;
      img {
           object-fit: cover;
-          width: 260px;
-          height: 260px;
+          width: 180px;
+          height: 180px;
           background-color: #fff;
           border: 1px solid var(--color-primary);
      }
      &:hover {
           border: 3px solid var(--color-primary);
-          box-shadow: 3px 3px 10px 5px var(--color-primary);
+          box-shadow: 3px 3px 5px 2px var(--color-primary);
      }
 `;
 
 const PostTitle = styled.div`
-     height: 80px;
-     width: 260px;
-     margin-top: 10px;
-     padding: 10px;
+     height: 60px;
+     width: 180px;
+     margin-top: 8px;
+     padding: 8px;
      border-top: 2px solid var(--color-primary);
+     overflow: hidden;
 `;

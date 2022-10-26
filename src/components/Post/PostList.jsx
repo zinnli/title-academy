@@ -11,7 +11,7 @@ function PostList() {
      const { isLoading, error, postList } = useSelector(
           (state) => state.postList
      );
-     console.log("메인페이지", postList);
+     //console.log("메인페이지", postList);
      const dispatch = useDispatch();
      useEffect(() => {
           dispatch(_getPost());
@@ -23,7 +23,7 @@ function PostList() {
      if (error) {
           return <div>{error.message}</div>;
      }
-     console.log("포스트컴포넌트", postList.data);
+     //console.log("포스트컴포넌트", postList.data);
      return (
           <PostListWrap>
                {postList.data &&
