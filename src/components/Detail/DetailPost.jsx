@@ -38,7 +38,7 @@ function DetailPost() {
       <img src={detailPost?.imgUrl} alt="zzal" />
       <p>{detailPost?.content}</p>
       <div>
-        {detailPost?.nickname === userinfomation.nickname ? (
+        {detailPost?.nickname === userinfomation?.nickname ? (
           <>
             <button onClick={() => navigate(`/write/${params}`)}>수정</button>
             <button onClick={onDeletePost}>삭제</button>
