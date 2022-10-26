@@ -9,8 +9,9 @@ import Post from "./Post";
 function PostList() {
   const navigate = useNavigate();
   const { isLoading, error, postList } = useSelector((state) => state.postList);
-  console.log("메인페이지", postList);
   const dispatch = useDispatch();
+
+  //GET요청
   useEffect(() => {
     dispatch(_getPost());
   }, [dispatch]);
@@ -21,7 +22,7 @@ function PostList() {
   if (error) {
     return <div>{error.message}</div>;
   }
-  console.log("포스트컴포넌트", postList.data);
+
   return (
     <PostListWrap>
       {postList.data &&

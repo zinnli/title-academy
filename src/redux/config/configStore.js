@@ -5,7 +5,7 @@ import detailPost from "../modules/detailPostSlice";
 import userList from "../modules/userSlice";
 
 const store = configureStore({
-     reducer: { postList, commentList, userList, detailPost },
+  reducer: { postList, commentList, userList, detailPost },
 });
 
 export default store;

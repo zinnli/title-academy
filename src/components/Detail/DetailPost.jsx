@@ -1,34 +1,35 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import {
   _deleteDetailPost,
   _getDetailPost,
+  _postLike,
 } from "../../redux/modules/detailPostSlice";
 
 function DetailPost() {
-  const access_token = sessionStorage.getItem("access_token");
   const userinfomation = JSON.parse(sessionStorage.getItem("userinfo"));
   const navigate = useNavigate();
   const params = useParams("id").id;
   const dispatch = useDispatch();
 
-  console.log("파람스", params);
   useEffect(() => {
-    console.log("유즈이펙트");
     dispatch(_getDetailPost(params));
   }, [dispatch]);
 
   const detailPost = useSelector((state) => state.detailPost.detailPost.data);
-  console.log("유즈셀렉터", detailPost);
+
+  const onClickLike = () => {
+    dispatch(_postLike(params));
+  };
 
   const onDeletePost = () => {
     dispatch(_deleteDetailPost(params));
     alert("삭제되었습니다!");
     navigate("/main");
   };
-  console.log("유저정보", userinfomation);
+
   return (
     <STDetailPost encType="multipart/form-data">
       <div>
@@ -38,11 +39,12 @@ function DetailPost() {
       <img src={detailPost?.imgUrl} alt="zzal" />
       <p>{detailPost?.content}</p>
       <div>
+        <span onClick={onClickLike}>{detailPost?.likeCheck ? "❤️" : "🖤"}</span>
+        <span>{detailPost?.likeCnt}</span>
         {detailPost?.nickname === userinfomation?.nickname ? (
           <>
             <button onClick={() => navigate(`/write/${params}`)}>수정</button>
             <button onClick={onDeletePost}>삭제</button>
-            <span>조아요</span>
           </>
         ) : null}
         {/* <button onClick={() => navigate(`/write/${params}`)}>수정</button>
