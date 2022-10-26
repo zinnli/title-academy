@@ -52,6 +52,7 @@ const PostListWrap = styled.div`
      align-items: center;
      justify-content: flex-start;
      width: 1100px;
+     height: 100%;
      min-height: 100vh;
      padding: 160px 0;
      gap: 60px 40px;

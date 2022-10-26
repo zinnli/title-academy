@@ -7,7 +7,7 @@ function Post({ post }) {
      return (
           <>
                <PostWrap>
-                    <img src={post.image} alt="main-img" />
+                    <img src={post.imgUrl} alt="main-img" />
                     <PostTitle>{post.content}</PostTitle>
                </PostWrap>
           </>

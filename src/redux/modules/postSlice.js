@@ -9,10 +9,7 @@ export const _postPost = createAsyncThunk(
      async (payload, thunkAPI) => {
           console.log("페이로드", payload);
           try {
-               const data = await axios.post(
-                    "http://localhost:3001/postList",
-                    payload
-               );
+               const data = await axios.post("/api/post", payload);
                return thunkAPI.fulfillWithValue(data.data);
           } catch (error) {
                return thunkAPI.rejectWithValue(error);

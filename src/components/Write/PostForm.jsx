@@ -98,7 +98,7 @@ function PostForm() {
           );
           dispatch(_postPost(formData));
           alert("작성완료!");
-          navigate("/main");
+          // navigate("/main");
      };
      return (
           <>
