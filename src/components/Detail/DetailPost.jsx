@@ -44,13 +44,17 @@ function DetailPost() {
       </div>
       <img src={detailPost?.imgUrl} alt="zzal" />
       <p>{detailPost?.content}</p>
-      <div>
+      <div className="detail-btns">
         <span onClick={onClickLike}>{detailPost?.likeCheck ? "❤️" : "🖤"}</span>
         <span>{detailPost?.likeCnt}</span>
         {detailPost?.nickname === userinfomation?.nickname ? (
           <>
-            <button onClick={() => navigate(`/write/${params}`)}>수정</button>
-            <button onClick={onDeletePost}>삭제</button>
+            <button onClick={() => navigate(`/write/${params}`)}>
+              <AiFillEdit />
+            </button>
+            <button onClick={onDeletePost}>
+              <AiFillDelete />
+            </button>
           </>
         ) : null}
         {/* <button onClick={() => navigate(`/write/${params}`)}>수정</button>
@@ -86,10 +90,10 @@ const STDetailPost = styled.div`
     flex-direction: column;
     align-items: flex-start;
     padding: 15px 0;
-    font-size: 15px;
+    font-size: 30px;
     margin: 8px 0;
     span:last-child {
-      font-size: 25px;
+      font-size: 15px;
     }
   }
   p {
