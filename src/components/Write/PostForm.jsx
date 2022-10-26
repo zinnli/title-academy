@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
+import { _getDetailPost, _putPost } from "../../redux/modules/detailPostSlice";
 import { _getPost, _patchPost, _postPost } from "../../redux/modules/postSlice";
 
 function PostForm() {
@@ -23,16 +24,17 @@ function PostForm() {
 
   // 수정하기 위해 get요청
   useEffect(() => {
-    dispatch(_getPost());
+    dispatch(_getDetailPost(params));
   }, [dispatch]);
 
   //수정 postList 할당
-  const { postList } = useSelector((state) => state.postList);
+  const modifyPost = useSelector((state) => state.detailPost.detailPost.data);
+  console.log("수정쪽", modifyPost);
 
   //수정할 post 필터링
-  const modifyPost = postList.filter((post) => {
-    return post.id == params;
-  })[0];
+  // const modifyPost = postList.filter((post) => {
+  //   return post.id == params;
+  // })[0];
   const [modifyState, setModifyState] = useState(modifyPost);
 
   //파일 인풋창 숨기고 버튼에 참조
@@ -74,14 +76,15 @@ function PostForm() {
     const { name, value } = e.target;
 
     setPost({ ...post, [name]: value, image: image.preview_URL });
-    setModifyState({
-      ...modifyState,
-      [name]: value,
-      image: image.preview_URL,
-    });
+    // setModifyState({
+    //   ...modifyState,
+    //   [name]: value,
+    //   image: image.preview_URL,
+    // });
 
-    // setModifyState({ ...modifyState, [name]: value });
+    setModifyState({ ...modifyState, [name]: value });
   };
+  console.log(modifyState);
   //제이슨 서버 이용(이미지없음)
   // const onSubmitHandler = (post) => {
   //      dispatch(_postPost(post));
@@ -89,13 +92,14 @@ function PostForm() {
   //      navigate("/main");
   // };
 
+  //수정완료 버튼  (리퀘스트 부분 확실히 알아야 함)
   const onPatchHandler = (modifyState, params) => {
-    dispatch(_patchPost({ modifyState, params }));
+    dispatch(_putPost({ modifyState, params }));
     alert("수정완료!");
     navigate(-1);
   };
 
-  // 폼데이터 형식
+  // 작성완료 버튼 (폼데이터 변환)
   const onSubmitHandler = () => {
     const formData = new FormData();
     formData.append("file", image.image_file);
@@ -103,8 +107,6 @@ function PostForm() {
       "post",
       new Blob([JSON.stringify(post)], { type: "application/json" })
     );
-
-    console.log("폼데이터", formData);
     dispatch(_postPost(formData));
     alert("작성완료!");
     navigate("/main");
@@ -129,6 +131,7 @@ function PostForm() {
             // onClick={(e) => e.target.value}
             ref={(refParam) => (inputRef = refParam)}
           />
+
           <img src={image?.preview_URL} alt="첨부된이미지" />
           <button type="button" onClick={() => inputRef.click()}>
             사진첨부
@@ -158,13 +161,14 @@ function PostForm() {
             accept="image/*"
             name="image_file"
             onChange={saveImage}
-            // onClick={(e) => e.target.value}
+            onClick={(e) => e.target.value}
             ref={(refParam) => (inputRef = refParam)}
           />
-          <img src={image?.preview_URL} alt="첨부된이미지" />
-          <button type="button" onClick={() => inputRef.click()}>
+          <img src={modifyState?.imgUrl} alt="첨부된이미지" />
+          <p>사진은 변경이 불가능 합니다..!!</p>
+          {/* <button type="button" onClick={() => inputRef.click()}>
             사진첨부
-          </button>
+          </button> */}
           <textarea
             name="content"
             onChange={onChangeHandler}

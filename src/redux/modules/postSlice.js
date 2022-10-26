@@ -21,6 +21,7 @@ export const _postPost = createAsyncThunk(
     }
   }
 );
+
 export const _getPost = createAsyncThunk(
   "getPost",
   async (payload, thunkAPI) => {

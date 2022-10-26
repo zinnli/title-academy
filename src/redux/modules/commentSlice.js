@@ -6,7 +6,6 @@ const initialState = { commentList: [] };
 export const _postComment = createAsyncThunk(
   "postComment",
   async (payload, thunkAPI) => {
-    console.log("코멘트페이로드", payload);
     try {
       const data = await axios.post(
         "http://localhost:3001/commentList",
@@ -27,7 +26,7 @@ export const _getCommentList = createAsyncThunk(
       const realdata = data.data.filter((comment) => {
         return comment.postId == payload;
       });
-      console.log("데이터", realdata);
+
       return thunkAPI.fulfillWithValue(realdata);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);

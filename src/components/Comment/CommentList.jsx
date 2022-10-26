@@ -12,7 +12,7 @@ function CommentList() {
   useEffect(() => {
     dispatch(_getCommentList(params));
   }, [dispatch]);
-  console.log("코리스트", comments);
+
   return (
     <STCommentList>
       {comments.map((comment) => {
