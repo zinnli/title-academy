@@ -11,27 +11,6 @@
      "postList": [
           {
                "image_file": "",
-               "title": "ㄻㄴㅇㄹㄴㅇ",
-               "content": "ㄹㅇㄴㅁㄻㄴㅇ",
-               "image": "blob:http://localhost:3000/228f61d1-05b4-40fa-9536-0ff688cd3c55",
-               "id": 5
-          },
-          {
-               "image_file": "",
-               "title": "ㄹㅇㄴㄹㅇㄴ",
-               "content": "ㄹㅇㄴㄹㅇㄴ",
-               "image": "blob:http://localhost:3000/23716352-9c65-4bf5-b48b-a801f5ffa68d",
-               "id": 6
-          },
-          {
-               "image_file": "",
-               "title": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹㄹ",
-               "content": "ㄹㄹㄹㄹㄹㄹㄹㄹㄹㅇㅇㅇㅇㅇㅇㅇㅇ",
-               "image": "blob:http://localhost:3000/61b13b4d-86ae-4305-bbc2-ac60f21fe5bb",
-               "id": 7
-          },
-          {
-               "image_file": "",
                "title": "ㄱ",
                "content": "ㄱ",
                "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
@@ -39,10 +18,17 @@
           },
           {
                "image_file": "",
-               "title": "ㄱ",
-               "content": "ㄱ",
-               "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+               "title": "ㅋㅋㅋㅋㅋ",
+               "content": "ㅎㅎㅎ",
+               "image": "blob:http://localhost:3000/5dc609c4-8b13-4f02-8f99-87a5af12f16d",
                "id": 9
+          },
+          {
+               "image_file": "",
+               "title": "ㅋㅋㅋㅋㅋ",
+               "content": "ㅎㅎㅎㅋㅋㅎㅎ",
+               "image": "blob:http://localhost:3000/8c9a469f-9e69-416c-9aae-9135d9315645",
+               "id": 10
           }
      ],
      "commentList": [
@@ -65,6 +51,46 @@
           {
                "comment": "ㅋㅋㅋㅋㅋ",
                "id": 5
+          },
+          {
+               "comment": "dfs",
+               "postId": "9",
+               "id": 6
+          },
+          {
+               "comment": "dfsdfsa",
+               "postId": "9",
+               "id": 7
+          },
+          {
+               "comment": "dfsdfsazzz",
+               "postId": "9",
+               "id": 8
+          },
+          {
+               "comment": "dfsdfsazzzdfsa",
+               "postId": "9",
+               "id": 9
+          },
+          {
+               "comment": "ㅋㅋㅋㅋㅋㅋ",
+               "postId": "8",
+               "id": 10
+          },
+          {
+               "comment": "zzz",
+               "postId": "3",
+               "id": 11
+          },
+          {
+               "comment": "zzzzzzz",
+               "postId": "3",
+               "id": 12
+          },
+          {
+               "comment": "zzzzzzzzzzzz",
+               "postId": "3",
+               "id": 13
           }
      ]
 }

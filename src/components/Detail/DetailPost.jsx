@@ -2,41 +2,52 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
-import { _deletePost, _getPost } from "../../redux/modules/postSlice";
+import {
+  _deleteDetailPost,
+  _getDetailPost,
+} from "../../redux/modules/detailPostSlice";
 
 function DetailPost() {
+  const access_token = sessionStorage.getItem("access_token");
+  const userinfomation = JSON.parse(sessionStorage.getItem("userinfo"));
   const navigate = useNavigate();
   const params = useParams("id").id;
   const dispatch = useDispatch();
 
+  console.log("파람스", params);
   useEffect(() => {
-    dispatch(_getPost());
+    console.log("유즈이펙트");
+    dispatch(_getDetailPost(params));
   }, [dispatch]);
-  const postList = useSelector((state) => state.postList.postList);
+
+  const detailPost = useSelector((state) => state.detailPost.detailPost.data);
+  console.log("유즈셀렉터", detailPost);
 
   const onDeletePost = () => {
-    dispatch(_deletePost(params));
+    dispatch(_deleteDetailPost(params));
     alert("삭제되었습니다!");
     navigate("/main");
   };
-
-  //postList에서 id로 게시물 조회
-  const post = postList.filter((post) => {
-    return post.id == params;
-  })[0];
-
+  console.log("유저정보", userinfomation);
   return (
     <STDetailPost encType="multipart/form-data">
       <div>
-        <span>{post?.title}</span>
-        <span>날짜</span>
+        <span>{detailPost?.title}</span>
+        <span>{detailPost?.createdAt.split("T")[0]}</span>
       </div>
-      <img src={post?.image} alt="zzal" />
-      <p>{post?.content}</p>
+      <img src={detailPost?.imgUrl} alt="zzal" />
+      <p>{detailPost?.content}</p>
       <div>
-        <button onClick={() => navigate(`/write/${params}`)}>수정</button>
+        {detailPost?.nickname === userinfomation.nickname ? (
+          <>
+            <button onClick={() => navigate(`/write/${params}`)}>수정</button>
+            <button onClick={onDeletePost}>삭제</button>
+            <span>조아요</span>
+          </>
+        ) : null}
+        {/* <button onClick={() => navigate(`/write/${params}`)}>수정</button>
         <button onClick={onDeletePost}>삭제</button>
-        <span>조아요</span>
+        <span>조아요</span> */}
       </div>
     </STDetailPost>
   );
