@@ -54,6 +54,27 @@ export const _deleteComment = createAsyncThunk(
   }
 );
 
+export const _putcomment = createAsyncThunk(
+  "putcomment",
+  async (payload, thunkAPI) => {
+    try {
+      const data = await axiosInstance.put(
+        `/api/post/${payload.postId}/comment/${payload.commentId}`,
+        payload.editComment,
+        {
+          headers: {
+            Access_Token: sessionStorage.getItem("refresh_token"),
+            Refresh_Token: sessionStorage.getItem("refresh_token"),
+          },
+        }
+      );
+      return thunkAPI.fulfillWithValue(data.data);
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error);
+    }
+  }
+);
+
 const commnetList = createSlice({
   name: "commentSlice",
   initialState,
@@ -81,6 +102,18 @@ const commnetList = createSlice({
         state.commentList = action.payload;
       })
       .addCase(_getCommentList.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload;
+      })
+      //수정하기 전역변수 리듀서
+      .addCase(_putcomment.pending, (state) => {
+        state.isLoading = true;
+      })
+      .addCase(_putcomment.fulfilled, (state, action) => {
+        state.isLoading = false;
+        state.commentList = action.payload;
+      })
+      .addCase(_putcomment.rejected, (state, action) => {
         state.isLoading = false;
         state.error = action.payload;
       });
