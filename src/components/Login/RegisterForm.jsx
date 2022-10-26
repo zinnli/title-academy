@@ -1,10 +1,12 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import { __postUser } from "../../redux/modules/userSlice";
 
 function RegisterForm() {
      const dispatch = useDispatch();
+     const navigate = useNavigate();
      //const newUser = useSelector((state) => state.user);
 
      const initialState = {
@@ -77,13 +79,15 @@ function RegisterForm() {
                     nickname,
                })
           );
+          alert("가입이 완료 되셨습니다!");
+          navigate("/");
           console.log("완료");
      };
 
      return (
           <STRegisterForm>
                <h2>회원가입</h2>
-               <form>
+               <form onSubmit={onSubmitUserHandler}>
                     <div>
                          <span>아이디</span>
                          <input
@@ -137,9 +141,7 @@ function RegisterForm() {
                          {nicknameInput}
                     </p>
 
-                    <button onClick={onSubmitUserHandler} className="enter-btn">
-                         회원가입 완료
-                    </button>
+                    <button className="enter-btn">회원가입 완료</button>
                </form>
           </STRegisterForm>
      );

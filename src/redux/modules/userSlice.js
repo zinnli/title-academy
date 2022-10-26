@@ -3,7 +3,7 @@ import { axiosInstance } from "../../shared/request";
 import axios from "axios";
 
 const initialState = {
-     user: [
+     userList: [
           {
                email: "",
                password: "",
@@ -54,8 +54,8 @@ export const __postLogin = createAsyncThunk(
      }
 );
 
-const userSlice = createSlice({
-     name: "user",
+const userList = createSlice({
+     name: "userList",
      initialState,
      reducers: {},
      extraReducers: {
@@ -89,4 +89,4 @@ const userSlice = createSlice({
      },
 });
 
-export default userSlice.reducer;
+export default userList.reducer;
