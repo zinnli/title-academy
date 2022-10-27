@@ -7,10 +7,9 @@ import Comment from "../Comment/Comment";
 
 function CommentList() {
      const params = useParams("id").id;
-     //const { id } = useParams();
      const dispatch = useDispatch();
      const comments = useSelector((state) => state.commentList.commentList);
-     console.log("comments test:", comments);
+     //댓글조회
      useEffect(() => {
           dispatch(_getCommentList(params));
      }, [dispatch, params]);

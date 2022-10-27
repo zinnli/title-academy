@@ -1,28 +1,24 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useParams } from "react-router-dom";
 import styled from "styled-components";
 import { AiOutlineCheck } from "react-icons/ai";
-import {
-     _getCommentList,
-     _postComment,
-} from "../../redux/modules/commentSlice";
+import { _postComment } from "../../redux/modules/commentSlice";
 
 function CommentForm() {
      const params = useParams("id").id;
      const [comment, setComment] = useState();
      const dispatch = useDispatch();
 
+     //댓글입력
      const onChangeHandler = (e) => {
           const { name, value } = e.target;
           setComment({ ...comment, content: value, postId: params });
-          //console.log("코멘트스테이트", comment);
      };
 
      const onCliclHandler = (comment) => {
           console.log(comment);
           dispatch(_postComment(comment));
-          alert("댓글입력완료");
           setComment("");
      };
 

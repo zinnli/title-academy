@@ -7,37 +7,40 @@ import { useParams } from "react-router-dom";
 
 function Comment({ comment }) {
      const params = useParams("id").id;
-     console.log("파람", params);
      const dispatch = useDispatch();
+     const userinfo = JSON.parse(sessionStorage.getItem("userinfo"));
+
+     //수정버튼 토글
      const [cmtToggle, setCmtToggle] = useState(true);
      const onToggleHandler = () => {
           setCmtToggle(!cmtToggle);
      };
-
-     const onDelComHandler = (params) => {
-          dispatch(_deleteComment(params));
+     //삭제버튼
+     const onDelComHandler = () => {
+          dispatch(_deleteComment({ postId: params, commentId: comment.id }));
      };
 
      return (
           <STComment>
                {cmtToggle ? <p>{comment.content}</p> : <input />}
-
-               <div>
+               {userinfo.nickname === comment.author ? (
                     <div>
-                         {cmtToggle ? (
-                              <button onClick={onToggleHandler}>
-                                   <AiFillEdit />
-                              </button>
-                         ) : (
-                              <button onClick={onToggleHandler}>
-                                   <AiOutlineCheck />
-                              </button>
-                         )}
+                         <div>
+                              {cmtToggle ? (
+                                   <button onClick={onToggleHandler}>
+                                        <AiFillEdit />
+                                   </button>
+                              ) : (
+                                   <button onClick={onToggleHandler}>
+                                        <AiOutlineCheck />
+                                   </button>
+                              )}
+                         </div>
+                         <button onClick={() => onDelComHandler()}>
+                              <AiFillDelete />
+                         </button>
                     </div>
-                    <button onClick={() => onDelComHandler(params)}>
-                         <AiFillDelete />
-                    </button>
-               </div>
+               ) : null}
           </STComment>
      );
 }
@@ -54,6 +57,12 @@ const STComment = styled.div`
      border: 2px solid var(--color-darktext);
      border-radius: 5px;
      color: var(--color-darktext);
+     input {
+          width: 80%;
+     }
+     input:focus {
+          outline: none;
+     }
      div {
           display: flex;
           gap: 10px;
