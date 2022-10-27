@@ -1,10 +1,9 @@
-import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import styled from "styled-components";
 import { _getDetailPost, _putPost } from "../../redux/modules/detailPostSlice";
-import { _getPost, _patchPost, _postPost } from "../../redux/modules/postSlice";
+import { _postPost } from "../../redux/modules/postSlice";
 
 function PostForm() {
      const params = useParams("id").id;
@@ -27,7 +26,7 @@ function PostForm() {
      // 수정하기 위해 GET요청
      useEffect(() => {
           dispatch(_getDetailPost(params));
-     }, [dispatch]);
+     }, [dispatch, params]);
 
      //수정 postList 할당 (수정 시 원본 데이터를 input value로 지정하기 위해 사용)
      const modifyPost = useSelector(
@@ -71,7 +70,7 @@ function PostForm() {
           return () => {
                URL.revokeObjectURL(image.preview_URL);
           };
-     }, []);
+     }, [image.preview_URL]);
 
      //입력 온체인지 핸들러
      const onChangeHandler = (e) => {

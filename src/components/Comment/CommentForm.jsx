@@ -12,7 +12,7 @@ function CommentForm() {
 
      //댓글입력
      const onChangeHandler = (e) => {
-          const { name, value } = e.target;
+          const { value } = e.target;
           setComment({ ...comment, content: value, postId: params });
      };
 

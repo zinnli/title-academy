@@ -3,7 +3,6 @@ import { useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import titleImage from "../../img/title.png";
-import PostList from "../Post/PostList";
 
 function Header() {
      //로그인 체크 전역변수 불러오기

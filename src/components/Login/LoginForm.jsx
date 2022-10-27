@@ -1,4 +1,4 @@
-import { useState, useCallback, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styled from "styled-components";
@@ -37,10 +37,8 @@ function LoginForm() {
 
      //로그인 체크 확인 시 메인페이지로 이동
      useEffect(() => {
-          {
-               loginCheck && navigate("/main");
-          }
-     }, [loginCheck]);
+          loginCheck && navigate("/main");
+     }, [loginCheck, navigate]);
      return (
           <STLoginForm>
                <h2>로그인</h2>
