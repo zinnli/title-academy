@@ -7,25 +7,27 @@ import { useParams } from "react-router-dom";
 
 function Comment({ comment }) {
   const params = useParams("id").id;
-  console.log("파람", params);
   const dispatch = useDispatch();
   const [cmtToggle, setCmtToggle] = useState(true);
-
   const [editComment, setEditComment] = useState();
 
+  //수정 <> 완료  버튼 토글핸들러
   const onToggleHandler = () => {
     setCmtToggle(!cmtToggle);
   };
 
+  //코멘트 삭제 버튼
   const onDelComHandler = (params) => {
     dispatch(_deleteComment(params));
   };
 
+  //코멘트 수정 인풋 온체인지 핸들러
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setEditComment({ ...editComment, [name]: value });
   };
 
+  //코멘트 수정 버튼
   const onEditHandler = () => {
     dispatch(
       _putcomment({

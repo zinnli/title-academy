@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../shared/request";
-import axios from "axios";
 
 const initialState = {
   userList: [
@@ -15,6 +14,7 @@ const initialState = {
   isLogin: false,
 };
 
+//회원가입 POST요청
 export const __postUser = createAsyncThunk(
   "signup",
   async (payload, thunkAPI) => {
@@ -27,6 +27,7 @@ export const __postUser = createAsyncThunk(
   }
 );
 
+//로그인 POST요청
 export const __postLogin = createAsyncThunk(
   "login",
   async (payload, thunkAPI) => {
@@ -37,7 +38,6 @@ export const __postLogin = createAsyncThunk(
           sessionStorage.setItem("access_token", res.headers.access_token);
           sessionStorage.setItem("refresh_token", res.headers.refresh_token);
           return res;
-          //console.log(res.headers.refresh_token);
         });
       return thunkAPI.fulfillWithValue(data.data);
     } catch (error) {

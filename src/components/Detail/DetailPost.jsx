@@ -20,16 +20,20 @@ function DetailPost() {
   const params = useParams("id").id;
   const dispatch = useDispatch();
 
+  //상세포스트 GET 요청
   useEffect(() => {
     dispatch(_getDetailPost(params));
   }, [dispatch]);
 
+  //상세포스트 전역변수 가져오기
   const detailPost = useSelector((state) => state.detailPost.detailPost.data);
 
+  //좋아요 버튼 포스트 요청
   const onClickLike = () => {
     dispatch(_postLike(params));
   };
 
+  //상세포스트 DELETE 요청
   const onDeletePost = () => {
     dispatch(_deleteDetailPost(params));
     alert("삭제되었습니다!");
@@ -57,9 +61,6 @@ function DetailPost() {
             </button>
           </>
         ) : null}
-        {/* <button onClick={() => navigate(`/write/${params}`)}>수정</button>
-        <button onClick={onDeletePost}>삭제</button>
-        <span>조아요</span> */}
       </div>
     </STDetailPost>
   );

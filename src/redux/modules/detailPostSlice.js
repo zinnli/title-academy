@@ -2,9 +2,8 @@ import { createAsyncThunk, createSlice, current } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../shared/request";
 
 const initialState = { detailPost: [], like: "" };
-// const userinfomation = JSON.parse(sessionStorage.getItem("userinfo"));
 
-//게시물 조회
+//상세 포스트 GET요청
 export const _getDetailPost = createAsyncThunk(
   "getDetailPost",
   async (payload, thunkAPI) => {
@@ -21,7 +20,8 @@ export const _getDetailPost = createAsyncThunk(
     }
   }
 );
-//게시물 삭제
+
+//상세 포스트 DELETE요청
 export const _deleteDetailPost = createAsyncThunk(
   "deleteDetailPost",
   async (payload, thunkAPI) => {
@@ -39,7 +39,8 @@ export const _deleteDetailPost = createAsyncThunk(
     }
   }
 );
-//게시물 수정
+
+//상세 포스트 PUT요청
 export const _putPost = createAsyncThunk(
   "putPost",
   async (payload, thunkAPI) => {
@@ -64,7 +65,7 @@ export const _putPost = createAsyncThunk(
   }
 );
 
-//좋아요 요청
+//좋아요 POST요청
 export const _postLike = createAsyncThunk(
   "postLike",
   async (payload, thunkAPI) => {
@@ -80,7 +81,6 @@ export const _postLike = createAsyncThunk(
           },
         }
       );
-
       return thunkAPI.fulfillWithValue(data.data.data);
     } catch (error) {
       return thunkAPI.rejectWithValue(error);
@@ -88,6 +88,7 @@ export const _postLike = createAsyncThunk(
   }
 );
 
+//상세 포스트 createSlice
 const detailPost = createSlice({
   name: "detailPost",
   initialState,

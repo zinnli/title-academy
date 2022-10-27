@@ -16,6 +16,7 @@ function PostList() {
     dispatch(_getPost());
   }, [dispatch]);
 
+  //GET요청 상태에 따른 처리
   if (isLoading) {
     return <div> 로딩중 .... </div>;
   }
