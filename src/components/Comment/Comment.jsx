@@ -2,19 +2,39 @@ import { useState } from "react";
 import styled from "styled-components";
 import { AiFillEdit, AiFillDelete, AiOutlineCheck } from "react-icons/ai";
 import { useDispatch } from "react-redux";
-import { _deleteComment } from "../../redux/modules/commentSlice";
+import { _deleteComment, _putcomment } from "../../redux/modules/commentSlice";
 import { useParams } from "react-router-dom";
 
 function Comment({ comment }) {
      const params = useParams("id").id;
      const dispatch = useDispatch();
      const userinfo = JSON.parse(sessionStorage.getItem("userinfo"));
+     const [editComment, setEditComment] = useState();
 
      //수정버튼 토글
      const [cmtToggle, setCmtToggle] = useState(true);
      const onToggleHandler = () => {
           setCmtToggle(!cmtToggle);
      };
+
+     //코멘트 수정 인풋 온체인지 핸들러
+     const onChangeHandler = (e) => {
+          const { name, value } = e.target;
+          setEditComment({ ...editComment, [name]: value });
+     };
+
+     //코멘트 수정 버튼
+     const onEditHandler = () => {
+          dispatch(
+               _putcomment({
+                    postId: params,
+                    commentId: comment.id,
+                    editComment,
+               })
+          );
+          setCmtToggle(!cmtToggle);
+     };
+
      //삭제버튼
      const onDelComHandler = () => {
           dispatch(_deleteComment({ postId: params, commentId: comment.id }));
@@ -22,7 +42,11 @@ function Comment({ comment }) {
 
      return (
           <STComment>
-               {cmtToggle ? <p>{comment.content}</p> : <input />}
+               {cmtToggle ? (
+                    <p>{comment.content}</p>
+               ) : (
+                    <input name="content" onChange={onChangeHandler} />
+               )}
                {userinfo.nickname === comment.author ? (
                     <div>
                          <div>
@@ -31,7 +55,7 @@ function Comment({ comment }) {
                                         <AiFillEdit />
                                    </button>
                               ) : (
-                                   <button onClick={onToggleHandler}>
+                                   <button onClick={onEditHandler}>
                                         <AiOutlineCheck />
                                    </button>
                               )}

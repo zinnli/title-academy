@@ -8,19 +8,25 @@ function LoginForm() {
      const navigate = useNavigate();
      const dispatch = useDispatch();
 
+     //초기값
      const initialState = {
           email: "",
           password: "",
      };
 
+     //유저 스테이트 생성
      const [user, setUser] = useState(initialState);
+
+     //로그인 체크 전역변수 불러오기
      const loginCheck = useSelector((state) => state.userList.isLogin);
 
+     //로그인에 필요한 인풋값 유저스테이트에 저장
      const onChangeLoginHandler = (e) => {
           const { name, value } = e.target;
           setUser({ ...user, [name]: value });
      };
 
+     //로그인 POST 요청
      const onSubmitLoginHandler = (e) => {
           e.preventDefault();
           if (user.email.trim() === "" || user.password.trim() === "") {
@@ -28,6 +34,8 @@ function LoginForm() {
           }
           dispatch(__postLogin(user));
      };
+
+     //로그인 체크 확인 시 메인페이지로 이동
      useEffect(() => {
           {
                loginCheck && navigate("/main");

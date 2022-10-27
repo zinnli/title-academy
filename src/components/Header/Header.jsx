@@ -6,16 +6,19 @@ import titleImage from "../../img/title.png";
 import PostList from "../Post/PostList";
 
 function Header() {
+     //로그인 체크 전역변수 불러오기
      const loginCheck = useSelector((state) => state.userList.isLogin);
      console.log(loginCheck);
      const navigate = useNavigate();
      const [userinfo, setUserinfo] = useState("");
 
+     //로그인 체크 확인 시 세션스토리지에 저장된 유저정보 불러오기
      useEffect(() => {
           const userinfomation = JSON.parse(sessionStorage.getItem("userinfo"));
           setUserinfo(userinfomation);
      }, [loginCheck]);
 
+     //세션스토리지의 토큰 및 유저정보 삭제
      const logOut = () => {
           sessionStorage.clear();
           window.location.reload();
@@ -45,7 +48,6 @@ function Header() {
                     ) : (
                          <button onClick={() => navigate("/")}>로그인</button>
                     )}
-                    {/* <button onClick={logOut}>로그아웃</button> */}
                </div>
           </STHeader>
      );

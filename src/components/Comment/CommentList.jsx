@@ -9,7 +9,8 @@ function CommentList() {
      const params = useParams("id").id;
      const dispatch = useDispatch();
      const comments = useSelector((state) => state.commentList.commentList);
-     //댓글조회
+
+     //코멘트 GET 요청
      useEffect(() => {
           dispatch(_getCommentList(params));
      }, [dispatch, params]);

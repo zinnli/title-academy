@@ -4,7 +4,7 @@ import { axiosInstance } from "../../shared/request";
 
 const initialState = { postList: [] };
 
-//게시물 생성
+//상세 게시물 POST요청
 export const _postPost = createAsyncThunk(
   "postPost",
   async (payload, thunkAPI) => {
@@ -22,7 +22,7 @@ export const _postPost = createAsyncThunk(
   }
 );
 
-//전체 게시물 조회
+//전체 게시물 GET요청
 export const _getPost = createAsyncThunk(
   "getPost",
   async (payload, thunkAPI) => {

@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import { axiosInstance } from "../../shared/request";
-import axios from "axios";
 
 const initialState = {
      userList: [
@@ -14,7 +13,8 @@ const initialState = {
      error: null,
      isLogin: false,
 };
-//회원가입
+
+//회원가입 POST요청
 export const __postUser = createAsyncThunk(
      "signup",
      async (payload, thunkAPI) => {
@@ -29,7 +29,8 @@ export const __postUser = createAsyncThunk(
           }
      }
 );
-//로그인
+
+//로그인 POST요청
 export const __postLogin = createAsyncThunk(
      "login",
      async (payload, thunkAPI) => {
@@ -65,7 +66,7 @@ const userList = createSlice({
           },
           [__postUser.fulfilled]: (state, action) => {
                state.isLoading = false;
-               alert("회원가입 완료");
+               alert("가입이 완료 되셨습니다!");
           },
           [__postUser.rejected]: (state, action) => {
                state.isLoading = false;

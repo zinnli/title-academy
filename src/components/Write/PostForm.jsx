@@ -24,16 +24,15 @@ function PostForm() {
           content: "",
      });
 
-     // 수정하기 위해 get요청
+     // 수정하기 위해 GET요청
      useEffect(() => {
           dispatch(_getDetailPost(params));
      }, [dispatch]);
 
-     //수정 postList 할당
+     //수정 postList 할당 (수정 시 원본 데이터를 input value로 지정하기 위해 사용)
      const modifyPost = useSelector(
           (state) => state.detailPost.detailPost.data
      );
-     console.log("수정쪽", modifyPost);
 
      //수정할 데이터 스테이트
      const [modifyState, setModifyState] = useState(modifyPost);
@@ -45,8 +44,8 @@ function PostForm() {
      const saveImage = (e) => {
           e.preventDefault();
 
+          //기존 이미지가 있는데 새로운 이미지 추가 시 기존 URL을 폐기 후 업로드
           if (e.target.files[0]) {
-               //새로운 이미지 추가시 기존 URL을 폐기 후 업로드
                URL.revokeObjectURL(image.preview_URL);
                const preview_URL = URL.createObjectURL(e.target.files[0]);
 
@@ -54,6 +53,8 @@ function PostForm() {
                     image_file: e.target.files[0],
                     preview_URL: preview_URL,
                }));
+
+               //최초 이미지 선택시 업로드
           } else {
                const preview_URL = URL.createObjectURL(e.target.files[0]);
 
@@ -93,7 +94,6 @@ function PostForm() {
           formData.append("file", image.image_file);
           formData.append(
                "post",
-
                new Blob([JSON.stringify(post)], { type: "application/json" })
           );
           dispatch(_postPost(formData));
@@ -163,9 +163,7 @@ function PostForm() {
                          />
                          <img src={modifyState?.imgUrl} alt="첨부된이미지" />
                          <p>사진은 변경이 불가능 합니다..!!</p>
-                         {/* <button type="button" onClick={() => inputRef.click()}>
-            사진첨부
-          </button> */}
+
                          <textarea
                               name="content"
                               onChange={onChangeHandler}
@@ -173,6 +171,7 @@ function PostForm() {
                               value={modifyState?.content}
                          />
                          <button
+                              className="pic-btn"
                               type="button"
                               onClick={() =>
                                    onPatchHandler(modifyState, params)
@@ -182,32 +181,6 @@ function PostForm() {
                          </button>
                     </PostFormWrap>
                )}
-
-               {/* <PostFormWrap>
-        <input name="title" onChange={onChangeHandler} placeholder="제목입력" />
-
-        <input
-          className="img-input"
-          type="file"
-          accept="image/*"
-          name="image_file"
-          onChange={saveImage}
-          // onClick={(e) => e.target.value}
-          ref={(refParam) => (inputRef = refParam)}
-        />
-        <img src={image.preview_URL} alt="첨부된이미지" />
-        <button type="button" onClick={() => inputRef.click()}>
-          사진첨부
-        </button>
-        <textarea
-          name="content"
-          onChange={onChangeHandler}
-          placeholder="내용입력"
-        />
-        <button type="button" onClick={() => onSubmitHandler(post)}>
-          수정/완료
-        </button>
-      </PostFormWrap> */}
           </>
      );
 }

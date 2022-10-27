@@ -19,14 +19,17 @@ function DetailPost() {
           dispatch(_getDetailPost(params));
      }, [dispatch, params]);
 
+     //상세포스트 전역변수 가져오기
      const detailPost = useSelector(
           (state) => state.detailPost.detailPost.data
      );
 
+     //좋아요 버튼 포스트 요청
      const onClickLike = () => {
           dispatch(_postLike(params));
      };
 
+     //상세포스트 DELETE 요청
      const onDeletePost = () => {
           dispatch(_deleteDetailPost(params));
           alert("삭제되었습니다!");
@@ -68,10 +71,6 @@ function DetailPost() {
                               </>
                          ) : null}
                     </div>
-
-                    {/* <button onClick={() => navigate(`/write/${params}`)}>수정</button>
-        <button onClick={onDeletePost}>삭제</button>
-        <span>조아요</span> */}
                </div>
           </STDetailPost>
      );
@@ -123,10 +122,6 @@ const STDetailPost = styled.div`
           justify-content: flex-end;
           padding: 10px;
           .heart-btn {
-               /* display: flex;
-               align-items: center;
-               justify-content: flex-end; */
-
                span {
                     color: var(--color-midtone);
                     padding: 5px 5px;
