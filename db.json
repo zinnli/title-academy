@@ -1,0 +1,96 @@
+{
+     "user": [
+          {
+               "id": 1,
+               "email": "hyunjin0376@naver.com",
+               "password": "q",
+               "passwordConfirm": "q",
+               "nickname": "ㅂ"
+          }
+     ],
+     "postList": [
+          {
+               "image_file": "",
+               "title": "ㄱ",
+               "content": "ㄱ",
+               "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bb/Octicons-cloud-upload.svg/1200px-Octicons-cloud-upload.svg.png",
+               "id": 8
+          },
+          {
+               "image_file": "",
+               "title": "ㅋㅋㅋㅋㅋ",
+               "content": "ㅎㅎㅎ",
+               "image": "blob:http://localhost:3000/5dc609c4-8b13-4f02-8f99-87a5af12f16d",
+               "id": 9
+          },
+          {
+               "image_file": "",
+               "title": "ㅋㅋㅋㅋㅋ",
+               "content": "ㅎㅎㅎㅋㅋㅎㅎ",
+               "image": "blob:http://localhost:3000/8c9a469f-9e69-416c-9aae-9135d9315645",
+               "id": 10
+          }
+     ],
+     "commentList": [
+          {
+               "comment": "ㅎㅎㅎㅎㅎ",
+               "id": 1
+          },
+          {
+               "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+               "id": 2
+          },
+          {
+               "comment": "ㅎㅎㅎㅎㅎㅎㅎ",
+               "id": 3
+          },
+          {
+               "comment": "ㅎㅎㅎㅎ",
+               "id": 4
+          },
+          {
+               "comment": "ㅋㅋㅋㅋㅋ",
+               "id": 5
+          },
+          {
+               "comment": "dfs",
+               "postId": "9",
+               "id": 6
+          },
+          {
+               "comment": "dfsdfsa",
+               "postId": "9",
+               "id": 7
+          },
+          {
+               "comment": "dfsdfsazzz",
+               "postId": "9",
+               "id": 8
+          },
+          {
+               "comment": "dfsdfsazzzdfsa",
+               "postId": "9",
+               "id": 9
+          },
+          {
+               "comment": "ㅋㅋㅋㅋㅋㅋ",
+               "postId": "8",
+               "id": 10
+          },
+          {
+               "comment": "zzz",
+               "postId": "3",
+               "id": 11
+          },
+          {
+               "comment": "zzzzzzz",
+               "postId": "3",
+               "id": 12
+          },
+          {
+               "comment": "zzzzzzzzzzzz",
+               "postId": "3",
+               "id": 13
+          }
+     ]
+}
